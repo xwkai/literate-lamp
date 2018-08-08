@@ -1,0 +1,31 @@
+# encoding: UTF-8
+
+mysql: &mysql
+  adapter: mysql2
+  pool: 5
+  port: 3306
+  host: localhost
+
+mysql_localhost: &mysql_localhost
+  <<: *mysql
+
+yolanda_mysql_localhost: &yolanda_mysql_localhost
+  <<: *mysql_localhost
+
+yolanda_prod_mysql_localhost: &yolanda_prod_mysql_localhost
+  <<: *yolanda_mysql_localhost
+  database: cashback
+  username: root
+  password: 123456
+
+development: &development
+  <<: *yolanda_prod_mysql_localhost
+
+production: &production
+  <<: *development
+
+performance: &performance
+  <<: *production
+
+cucumber: &cucumber
+  <<: *test
