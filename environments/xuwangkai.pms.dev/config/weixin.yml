@@ -1,0 +1,22 @@
+# encoding: UTF-8
+
+defaults: &defaults
+  domain: 'http://hongbao.ddns.yolanda.hk'
+  token: 'hongbao'
+  encodingAesKey: 'cSBK6vICUbTpU77quFRGXWGMp2GDGmd9k1rORevVZRh'
+  corpId: 'wx237034ca6ff45a2c'
+  secret: '7fa10e9f2b11d41b6eb392430f0c8c92'
+
+development: &development
+  <<: *defaults
+
+test:
+  <<: *development
+
+production:
+  domain: 'http://srm.yolanda.hk'
+  token: 'YOLSRM6H9uKCNs5efAga'
+  encodingAesKey: 'cSBK6vICUbTpU77quFRGXWGMp2GDGmd9k1rORevVZRh'
+  corpId: 'wx91c5262f3c33a727'
+  secret: 'cb10094484b3c80726cc1973e1168b31'
+
