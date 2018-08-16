@@ -1,0 +1,211 @@
+
+<style>
+
+  .login-btn {
+    background: #10bded none repeat scroll 0 0;
+    border: medium none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 18px;
+    height: 35px;
+    margin-top: 25px;
+    width: 100%;
+  }
+  .error{
+    color:red;
+  }
+  #file_div{
+    position: absolute;
+    border-width:0px;
+    position:absolute;
+    left:9px;
+    top:416px;
+    width:700px;
+    height:318px;
+  }
+    .file_upload{
+      border:none;
+    }
+    .file_div{
+      border:1px solid #CCCCCC;
+      width: 80px;
+      height: 80px;
+    }
+</style>
+  <div><img src="http://7xidn7.com2.z0.glb.qiniucdn.com/Fh16gY_Hm_Mj3ZIX5cryt2HCs7c2" style="width: 100%;height: 135px"></div>
+  <div style="padding: 20px 10px">
+    <div>
+      <form id="uploadForm" enctype="multipart/form-data">
+        <div style="margin:0;padding:0;display:inline">
+          <div style="padding: 10px 10px">
+            <div style="text-align: center">第一步：选择购买平台</div>
+            <div>
+              <select style="width: 100%;height: 100%" id="platform" name="platform">
+                <option value="1">天猫</option>
+                <option value="2">京东</option>
+                <option value="3">淘宝</option>
+              </select>
+            </div>
+          </div>
+          <div style="padding: 20px 10px">
+            <div style="text-align: center">第二步：提交购买订单号</div>
+            <input id="order_number" name="order_number" placeholder="请填写或复制粘贴订单号" type="text" style="width: 100%;height: 25px">
+          </div>
+          <div style="width: 100%">
+            <div style="text-align: center">第三步：提交好评截图</div>
+            <table style="width: 100%">
+              <tr>
+                <td>
+                  <div  class="fileInputContainer">
+                    <img src="" id="fileInput" width="96px" height="144px">
+                    <input class="fileInput" id="file" type="file" name="praise_img" />
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>查看示意图</td>
+                <!--<td>查看示意图</td>-->
+                <!--<td>查看示意图</td>-->
+              </tr>
+            </table>
+          </div>
+
+          <button type="button" class="login-btn" onclick="bunDing()" style="width: 100px">提交</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+<div id="overContarner">
+  <a class="overInput" href="/weixin/notice_opt/reward">我的奖励</a>
+  <a class="overInput" href="#">返现规则</a>
+</div>
+<!--</div>-->
+
+
+
+<script language="javascript">
+    $(function(){
+        $("#file").on("change",function(){
+            var file=this.files[0];
+            if(this.files && file){
+                var reader=new FileReader();
+                reader.onload=function(e){
+                    $("#fileInput").attr("src",e.target.result);
+                        window.result = this.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    });
+</script>
+<style type="text/css">
+
+  .fileInputContainer{
+    height:144px;
+    background:url("http://7xidn7.com2.z0.glb.qiniucdn.com/Fh16gY_Hm_Mj3ZIX5cryt2HCs7c2");
+    position:relative;
+    width: 96px;
+    border: 1px solid #CCCCCC;
+  }
+  .fileInput{
+    height:144px;
+    font-size: 300px;
+    position:absolute;
+    right:0;
+    top:0;
+    opacity: 0;
+    filter:alpha(opacity=0);
+    cursor:pointer;
+  }
+
+</style>
+
+<script>
+
+    function bunDing(){
+
+        var result = window.result;
+        var platform = $("#platform").val();
+        var order_number = $("#order_number").val();
+        var data = {
+            image:result,
+            platform:platform,
+            order_number:order_number
+        };
+        var formData = new FormData(document.getElementById("uploadForm"));
+        formData.append("order_number", order_number);
+        formData.append("platform", platform);
+
+        if (result!='' && result!=undefined){
+            formData.append("image", result);
+        }
+
+//        fetch('/weixin/notice_opt/save_info', {
+//            method: 'POST',
+//            body: formData,
+//            mode:'cors',// 避免cors攻击
+//            credentials: 'include'
+//        }).then(function (response){
+//            var res = response.json();
+//            res.then(function (data) {
+//                console.log(data.code);
+//                if(data.code == '20000'){
+//                    alert("提交成功！\n红包会在3个工作日内发送，请各位亲耐心等待。可以点击下方，返现进度查看进度哦~");
+//                    return result;
+//                }else{
+//                    alert("提交失败！\n"+data.msg);
+//                    return result;
+//                }
+//            })
+//        }).catch(function(err){
+//            alert(err);
+//            console.log("Fetch错误:"+err);
+//        });
+
+        $.ajax({
+            type: "post",
+            url:'/weixin/notice_opt/save_info',
+            data : formData,
+            processData: false, // 告诉jQuery不要去处理发送的数据
+            contentType: false, // 告诉jQuery不要去设置Content-Type请求头
+            async:false,
+            error: function(request) {
+                alert("错误！！");
+            },
+            success: function(result) {
+                //success
+                console.log(result["code"]);
+                if(result["code"] == '20000'){
+                    alert("提交成功！\n红包会在3个工作日内发送，请各位亲耐心等待。可以点击下方，返现进度查看进度哦~");
+                    return result;
+                }else{
+                    alert("提交失败！\n"+result["msg"]);
+                    return result;
+                }
+            }
+        });
+    }
+
+</script>
+<script>
+    var wAlert = window.alert;
+    window.alert = function (message) {
+        try {
+            var iframe = document.createElement("IFRAME");
+            iframe.style.display = "none";
+            iframe.setAttribute("src", 'data:text/plain,');
+            document.documentElement.appendChild(iframe);
+            var alertFrame = window.frames[0];
+            var iwindow = alertFrame.window;
+            if (iwindow == undefined) {
+                iwindow = alertFrame.contentWindow;
+            }
+            iwindow.alert(message);
+            iframe.parentNode.removeChild(iframe);
+        }
+        catch (exc) {
+            return wAlert(message);
+        }
+    }
+</script>

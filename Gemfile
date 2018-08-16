@@ -62,5 +62,19 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'mysql2', '~> 0.3.2'
+gem 'mysql2'
 gem 'kaminari', '~> 0.17.0'
+gem 'settingslogic'
+gem 'jquery-rails'
+gem 'bootstrap-sass', '~> 3.3.7'
+#七牛，用于图片、文件的存储
+gem 'qiniu', '~> 6.2.1'
+
+gem 'redis-namespace'
+# https://github.com/intridea/hashie
+gem 'hashie'
+
+#### Rails File Uploads
+
+# https://github.com/carrierwaveuploader/carrierwave
+gem 'carrierwave'

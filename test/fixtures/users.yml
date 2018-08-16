@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  public_number_id: MyString
+  openid: MyString
+  account_name: MyString
+  avatar: MyString
+  gender: 1
+  phone: MyString
+
+two:
+  public_number_id: MyString
+  openid: MyString
+  account_name: MyString
+  avatar: MyString
+  gender: 1
+  phone: MyString

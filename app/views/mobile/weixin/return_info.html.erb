@@ -1,0 +1,159 @@
+
+<div id="base" class="">
+
+  <!-- Unnamed (Rectangle) -->
+  <div id="u0" class="ax_default box_1">
+    <div id="u0_div" class=""></div>
+  </div>
+
+  <!-- Unnamed (Image) -->
+  <div id="u1" class="ax_default image">
+    <img id="u1_img" class="img " src="mobile/u1.png"/>
+  </div>
+
+  <!-- Unnamed (Rectangle) -->
+  <div id="u2" class="ax_default heading_1">
+    <div id="u2_div" class=""></div>
+    <div id="u2_text" class="text ">
+      <p><span>第一步：选择购买平台</span></p>
+    </div>
+  </div>
+
+  <!-- Unnamed (Droplist) -->
+  <div id="u3" class="ax_default droplist">
+    <select id="u3_input">
+      <option value="天猫">天猫</option>
+      <option value="京东">京东</option>
+      <option value="淘宝">淘宝</option>
+    </select>
+  </div>
+
+  <!-- Unnamed (Rectangle) -->
+  <div id="u4" class="ax_default heading_1">
+    <div id="u4_div" class=""></div>
+    <div id="u4_text" class="text ">
+      <p><span>第二步：提交购买订单号</span></p>
+    </div>
+  </div>
+
+  <!-- Unnamed (Text Field) -->
+  <div id="u5" class="ax_default text_field">
+    <input id="u5_input" type="text" placeholder="请填写或复制粘贴订单号"/>
+  </div>
+
+  <!-- Unnamed (Rectangle) -->
+  <div id="u6" class="ax_default heading_1">
+    <div id="u6_div" class=""></div>
+    <div id="u6_text" class="text ">
+      <p><span>第三步：提交好评截图</span></p>
+    </div>
+  </div>
+
+  <!-- Unnamed (Image) -->
+  <div id="uu">
+    <div id="upload">
+
+    </div>
+  </div>
+  <!-- Unnamed (Rectangle) -->
+  <div id="u10" class="ax_default heading_1">
+    <div id="u10_div" class=""></div>
+    <div id="u10_text" class="text ">
+      <p><span>查看示意图</span></p>
+    </div>
+  </div>
+
+
+  <!-- Unnamed (Rectangle) -->
+  <div id="u11" class="ax_default heading_1">
+    <div id="u11_div" class=""></div>
+    <div id="u11_text" class="text ">
+      <p><span>查看示意图</span></p>
+    </div>
+  </div>
+
+  <!-- Unnamed (Rectangle) -->
+  <div id="u12" class="ax_default heading_1">
+    <div id="u12_div" class=""></div>
+    <div id="u12_text" class="text ">
+      <p><span>查看示意图</span></p>
+    </div>
+  </div>
+
+  <!-- Unnamed (Rectangle) -->
+  <div id="u13" class="ax_default box_1">
+    <div id="u13_div" class=""></div>
+  </div>
+
+  <!-- Unnamed (Rectangle) -->
+  <div id="u14" class="ax_default heading_1">
+    <div id="u14_div" class=""></div>
+    <div id="u14_text" class="text ">
+      <p><span>提交</span></p>
+    </div>
+  </div>
+
+  <!-- Unnamed (Rectangle) -->
+  <div id="u15" class="ax_default heading_1">
+    <div id="u15_div" class=""></div>
+    <div id="u15_text" class="text ">
+      <p><span>无法提交</span></p>
+    </div>
+  </div>
+
+  <!-- Unnamed (Rectangle) -->
+  <div id="u16" class="ax_default heading_1">
+    <div id="u16_div" class=""></div>
+    <div id="u16_text" class="text ">
+      <p><span>返现进度</span></p>
+    </div>
+  </div>
+
+  <!-- Unnamed (Rectangle) -->
+  <div id="u17" class="ax_default heading_1">
+    <div id="u17_div" class=""></div>
+    <div id="u17_text" class="text ">
+      <p><span>返现规则</span></p>
+    </div>
+  </div>
+</div>
+<div id="bg"></div>
+
+
+<script>
+    document.documentElement.style.fontSize = document.documentElement.clientWidth*0.1+'px';
+    var options = {
+        path: '/',
+        onSuccess: function (res) {
+            console.log(res);
+        },
+        onFailure: function (res) {
+            console.log(res);
+        }
+    }
+    var upload = tinyImgUpload('#upload', options);
+
+
+</script>
+<script>
+    var sucn =document.getElementById("u10_text");
+    sucn.addEventListener('click',
+        function(){
+            var cse = document.getElementById("bg");
+            cse.style="display:block";
+        },false)
+    var ccc =document.getElementById("bg");
+    ccc.addEventListener('click',
+        function(){
+            var cse = document.getElementById("bg");
+            cse.style="display:none";
+        },false)
+    //    $(function(){
+    //        $("#u10_text").toggle(function(){
+    //           $("#bg").hide()
+    //        },function(){
+    //          $("#bg").show()
+    //        }
+    //        )
+</script>
+

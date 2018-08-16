@@ -12,14 +12,21 @@ mysql_localhost: &mysql_localhost
 yolanda_mysql_localhost: &yolanda_mysql_localhost
   <<: *mysql_localhost
 
-yolanda_prod_mysql_localhost: &yolanda_prod_mysql_localhost
+
+yolanda_dev_mysql_localhost: &yolanda_dev_mysql_localhost
   <<: *yolanda_mysql_localhost
   database: cashback
   username: root
-  password: 123456
+  password: '123456'
 
 development: &development
-  <<: *yolanda_prod_mysql_localhost
+  <<: *yolanda_dev_mysql_localhost
+
+test: &test
+  <<: *yolanda_mysql_localhost
+  database: yolanda_test
+  username: root
+  password: '123456'
 
 production: &production
   <<: *development
