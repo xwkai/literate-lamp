@@ -42,7 +42,7 @@ class Weixin::NoticeOptController < Weixin::BaseController
       params[:wx_id] = user_result["nickname"]
       params[:openid] = session[:openid]
       @user_info = user_result["headimgurl"]
-      upload_flag, url = Common.upload_to_qiniu(params[:praise_img],'yolanda')
+      upload_flag, url = Common.upload_to_qiniu(params[:praise_img],'advertisement')
       params[:praise_img] = url
       response_status = ReturnInfo.save_info(params)
     else

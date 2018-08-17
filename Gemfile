@@ -78,3 +78,5 @@ gem 'hashie'
 
 # https://github.com/carrierwaveuploader/carrierwave
 gem 'carrierwave'
+
+gem 'vuejs-rails'

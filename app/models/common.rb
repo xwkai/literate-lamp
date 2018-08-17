@@ -21,7 +21,7 @@ class Common
   #获取文件在七牛上的url
   def self.get_url_from_qiniu(upload_type, filename)
     url = ''
-    qi_niu_host_url = "http://7vikuc.com2.z0.glb.qiniucdn.com/"
+    qi_niu_host_url = "http://7xiow1.com2.z0.glb.qiniucdn.com/"
 
     if qi_niu_host_url.present? && filename.to_s.present?
       url = qi_niu_host_url + filename.to_s
